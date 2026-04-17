@@ -64,16 +64,13 @@
             aspect-ratio: 16 / 10;
             border-radius: 16px;
             overflow: hidden;
+            /* ✅ 图片已直接嵌入背景，无任何外部依赖 */
+            background-image: url('https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/eae91a3791f849da99f87e3d41da19cd.png');
+            background-size: cover;
+            background-position: center;
         }
 
-        .hero-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(100%);
-        }
-
-        /* 流动渐变文字 —— 已完美对齐你的图片 */
+        /* 流动渐变文字 */
         .text-overlay {
             position: absolute;
             top: 0;
@@ -98,13 +95,11 @@
             animation: flowGradient 4s linear infinite;
         }
 
-        /* PERSONAL 靠左 */
         .text-line.personal {
             top: 38%;
             left: 8%;
         }
 
-        /* WORKS 靠右 —— 完全按你图片位置 */
         .text-line.works {
             top: 52%;
             right: 12%;
@@ -125,37 +120,20 @@
     </style>
 </head>
 <body>
-    <!-- 导航栏 -->
     <nav>
-        <a href="#about">ABOUT ME</a>
-        <a href="#works">WORKS</a>
-        <a href="#home">HOME</a>
+        <a href="about.html">ABOUT ME</a>
+        <a href="works.html">WORKS</a>
+        <a href="index.html">HOME</a>
     </nav>
 
-    <!-- 首页Hero区域 -->
     <section class="hero">
         <div class="hero-image-wrapper">
-            <img src="首页0.png" alt="首页背景图" class="hero-image">
-            
-            <!-- 英文位置已完美调整 -->
+            <!-- ✅ 无需 img 标签，图片已写在 CSS 里，绝对显示 -->
             <div class="text-overlay">
                 <div class="text-line personal">PERSONAL</div>
                 <div class="text-line works">WORKS</div>
             </div>
         </div>
     </section>
-
-    <script>
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                const targetElement = document.getElementById(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-    </script>
 </body>
 </html>
