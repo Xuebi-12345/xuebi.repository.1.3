@@ -18,7 +18,6 @@
             overflow-x: hidden;
         }
 
-        /* 导航栏 */
         nav {
             position: fixed;
             top: 0;
@@ -47,7 +46,6 @@
             transform: translateY(-2px);
         }
 
-        /* 主容器 */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -64,13 +62,15 @@
             aspect-ratio: 16 / 10;
             border-radius: 16px;
             overflow: hidden;
-            /* ✅ 图片已直接嵌入背景，无任何外部依赖 */
-            background-image: url('https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/eae91a3791f849da99f87e3d41da19cd.png');
-            background-size: cover;
-            background-position: center;
+            background-color: #d1d0cd;
         }
 
-        /* 流动渐变文字 */
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         .text-overlay {
             position: absolute;
             top: 0;
@@ -78,7 +78,6 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            display: block;
         }
 
         .text-line {
@@ -111,7 +110,6 @@
             100% { background-position: 200% center; }
         }
 
-        /* 响应式适配 */
         @media (max-width: 768px) {
             nav { gap: 8vw; padding: 1.5rem 0; }
             nav a { font-size: 1rem; }
@@ -128,7 +126,12 @@
 
     <section class="hero">
         <div class="hero-image-wrapper">
-            <!-- ✅ 无需 img 标签，图片已写在 CSS 里，绝对显示 -->
+        
+            <!-- ====================== -->
+            <!-- ✅ 图片位置在这里！！！ -->
+            <!-- ====================== -->
+            <img class="hero-image" src="首页0.png">
+
             <div class="text-overlay">
                 <div class="text-line personal">PERSONAL</div>
                 <div class="text-line works">WORKS</div>
