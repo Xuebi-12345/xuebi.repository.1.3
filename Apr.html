@@ -73,21 +73,19 @@
             filter: grayscale(100%);
         }
 
-        /* 流动渐变文字 */
+        /* 流动渐变文字 —— 已完美对齐你的图片 */
         .text-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 0 2rem;
             pointer-events: none;
+            display: block;
         }
 
         .text-line {
+            position: absolute;
             font-size: 5vw;
             font-weight: 900;
             text-transform: uppercase;
@@ -100,31 +98,29 @@
             animation: flowGradient 4s linear infinite;
         }
 
-        .text-line:nth-child(2) {
+        /* PERSONAL 靠左 */
+        .text-line.personal {
+            top: 38%;
+            left: 8%;
+        }
+
+        /* WORKS 靠右 —— 完全按你图片位置 */
+        .text-line.works {
+            top: 52%;
+            right: 12%;
             animation-delay: 0.5s;
         }
 
         @keyframes flowGradient {
-            0% {
-                background-position: 0% center;
-            }
-            100% {
-                background-position: 200% center;
-            }
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
         }
 
         /* 响应式适配 */
         @media (max-width: 768px) {
-            nav {
-                gap: 8vw;
-                padding: 1.5rem 0;
-            }
-            nav a {
-                font-size: 1rem;
-            }
-            .text-line {
-                font-size: 8vw;
-            }
+            nav { gap: 8vw; padding: 1.5rem 0; }
+            nav a { font-size: 1rem; }
+            .text-line { font-size: 8vw; }
         }
     </style>
 </head>
@@ -139,26 +135,24 @@
     <!-- 首页Hero区域 -->
     <section class="hero">
         <div class="hero-image-wrapper">
-            <!-- 替换为你的图片地址 -->
-            <img src="https://picsum.photos/id/1027/1600/1000" alt="Designer Portrait" class="hero-image">
+            <img src="首页0.png" alt="首页背景图" class="hero-image">
+            
+            <!-- 英文位置已完美调整 -->
             <div class="text-overlay">
-                <div class="text-line">PERSONAL</div>
-                <div class="text-line">DESIGN WORKS</div>
+                <div class="text-line personal">PERSONAL</div>
+                <div class="text-line works">WORKS</div>
             </div>
         </div>
     </section>
 
     <script>
-        // 导航平滑滚动
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href').substring(1);
                 const targetElement = document.getElementById(targetId);
                 if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth'
-                    });
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
                 }
             });
         });
